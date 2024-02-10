@@ -1,0 +1,69 @@
+body {
+  background: linear-gradient(to bottom, #87CEEB, #1E90FF);
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+.cloud {
+  background-color: #FFFF99;
+  border-radius: 50%;
+  padding: 10px;
+  margin: 10px;
+  display: inline-block;
+}
+.cloud h3 {
+  font-size: 16px;
+  margin: 0;
+}
+.vision {
+  text-align: center;
+  color: white;
+  padding: 20px;
+}
+.grades {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  background-color: #1E90FF;
+  padding: 20px;
+}
+.grade-box {
+  background-color: #4169E1;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
+}
+.enroll-button {
+  background-color: #87CEEB;
+  color: #1E90FF;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.ai-cloud {
+  background-color: #FFFF99;
+  border-radius: 50%;
+  padding: 10px;
+  margin: 10px;
+  display: inline-block;
+  position: relative;
+}
+.ai-cloud::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 20px solid #FFFF99;
+}
+.ai-cloud h3 {
+  font-size: 16px;
+  margin: 0;
+}
