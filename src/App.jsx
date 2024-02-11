@@ -1,19 +1,26 @@
-import React, { useEffect, useState } from 'react';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import "./App.css";
+import axios from "axios";
+import { Link } from "react-router-dom";
 
 function App() {
-  const [courses,setCourses]=useState([]);
+  const [courses, setCourses] = useState([]);
 
-  async function getCourses(){
-    const res=await fetch("https://api-learningumbrella.equitysofttechnologies.com/api/course/course_get?apikey=a1b7fbb288185217e2f3084c2e6194c26316bb56&token=47950c539bce8780ca5f9bd8532b8a31ef736973")
-    .then(res => res.json())
+  async function getAllCourses() {
+    try {
+      const res = await axios.get(
+        `${import.meta.env.VITE_API_GET_ALL_COURSES_ROUTE}`
+      );
+      setCourses(res.data.r);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
-  useEffect(() =>{
-    const courseList=Promise.resolve(getCourses()).then(res => res);
-    setCourses(courseList);
-    console.log(courses);
-  },[])
+  useEffect(() => {
+    getAllCourses();
+  }, []);
+
   return (
     <div className="App">
       <header>
@@ -37,11 +44,20 @@ function App() {
           <p>We're making learning fun and enjoyable.</p>
         </section>
         <section className="grades">
-          <div className="grade-box">
+          {/* <div className="grade-box">
             <p>GRADE ONE</p>
             <button>Enroll now</button>
-          </div>
-          {/* Repeat for other grade levels */}
+          </div> */}
+          {courses.map((course) => (
+            <div key={course.id}>
+              <div className="grade-box">
+                <p>{course.name}</p>
+                <Link to={`/courses/${course.id}`}>
+                  <button>Enroll now</button>
+                </Link>
+              </div>
+            </div>
+          ))}
         </section>
       </main>
     </div>
